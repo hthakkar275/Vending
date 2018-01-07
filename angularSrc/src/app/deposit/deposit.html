@@ -1,0 +1,44 @@
+<div  class="col-lg-3">
+    <form [formGroup]="formModel" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input id="amount"
+                class="form-control"
+                type="number"
+                min="0"
+                formControlName="amount">
+        </div>        
+        <div class="form-group">
+            <label for="ccNumber">Credit Card:</label>
+            <input id="ccNumber"
+                class="form-control"
+                type="text"
+                formControlName="ccNumber">
+        </div>
+        <div class="form-group">
+            <label for="ccExpiration">Product price:</label>
+            <input id="ccExpiration"
+                placeholder="MM/YYYY"
+                class="form-control"
+                type="text"
+                formControlName="ccExpiration">
+        </div>
+        <div class="form-group">
+            <button type="submit"
+                class="btn btn-primary btn-block">Submit</button>
+        </div>
+    </form>
+    <div>
+        <button type="button" (click)="onClear()" class="btn btn-info btn-block">Clear</button>
+    </div>
+</div>
+<div class="col-lg-12" *ngIf="confirmationNumber > 0">         
+    <h4>Confirmation Number: {{ confirmationNumber }}</h4>
+    <h4>Deposited {{formModel.value.amount | currency:'USD':'symbol'}}</h4>
+    <h4>Your new balance is 
+        {{accountService.getCurrentLoggedInAccount().currentBalance | currency:'USD':'symbol'}}</h4>
+</div>
+<div class="col-lg-12 error-message" *ngIf="confirmationNumber < 0">         
+    <h4>Trasaction failed: {{ errorMessage }}</h4>
+</div>
+  

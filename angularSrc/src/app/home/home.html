@@ -1,0 +1,23 @@
+<br>
+<br>
+<br>
+<div class="row carousel-holder">
+    <div class="col-lg-6">
+      <h3>Welcome {{account.firstName}} {{account.lastName}}</h3>
+      <h3>Your current balance is {{account.currentBalance | currency:'USD':'symbol'}}</h3>
+    </div>
+</div>
+<div class="row">
+  <vending-temp-message [message]="message"></vending-temp-message>
+</div>  
+<div class="row">
+  <div *ngFor="let product of products">
+    <div class="btn-group btn-group-lg" role="group">
+        <vending-product 
+          [product]="product" (message)=handleMessage($event)>
+        </vending-product>
+        <div class="col-sm-1"></div>
+    </div>
+  </div>
+</div>
+

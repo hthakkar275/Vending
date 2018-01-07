@@ -1,0 +1,12 @@
+.slide-image {
+    width: 100%;
+}
+.carousel-holder {
+    margin-bottom: 30px;
+}
+.carouse-control,.item {
+    border-radius: 4px;
+}
+.product-button-space {
+    margin: 10px 10px 10px 0px
+}
